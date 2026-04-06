@@ -41,14 +41,14 @@ public class FinanceTrackerForm {
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainPanel.setBackground(Color.LIGHT_GRAY);
 
-        // NASLOV
+
         naslov = new JLabel("PRAĆENJE LIČNIH FINANSIJA", SwingConstants.CENTER);
         naslov.setFont(new Font("Arial", Font.BOLD, 14));
         naslov.setAlignmentX(Component.CENTER_ALIGNMENT);
         naslov.setBorder(BorderFactory.createEmptyBorder(8, 0, 8, 0));
         mainPanel.add(naslov);
 
-        // LABEL + IZNOS
+
         text1 = new JLabel("Unesite iznos vašeg prihoda:");
         text1.setBorder(BorderFactory.createEmptyBorder(4, 6, 2, 0));
         mainPanel.add(text1);
@@ -60,7 +60,7 @@ public class FinanceTrackerForm {
 
         mainPanel.add(new JSeparator());
 
-        // LABEL + OPIS
+
         text2 = new JLabel("Opišite ovaj izvor prihoda:");
         text2.setBorder(BorderFactory.createEmptyBorder(4, 6, 2, 0));
         mainPanel.add(text2);
@@ -72,7 +72,7 @@ public class FinanceTrackerForm {
 
         mainPanel.add(new JSeparator());
 
-        // VRSTA I KATEGORIJA
+
         JPanel comboPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 6, 4));
         comboPanel.setBackground(Color.LIGHT_GRAY);
 
@@ -90,7 +90,7 @@ public class FinanceTrackerForm {
 
         mainPanel.add(comboPanel);
 
-        // DUGMAD
+
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 6, 2));
         buttonPanel.setBackground(Color.LIGHT_GRAY);
 
@@ -114,7 +114,7 @@ public class FinanceTrackerForm {
 
         mainPanel.add(new JSeparator());
 
-        // SAŽETAK
+
         JPanel summaryPanel = new JPanel(new GridLayout(1, 3));
         summaryPanel.setBackground(Color.LIGHT_GRAY);
         summaryPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 25));
@@ -133,16 +133,12 @@ public class FinanceTrackerForm {
         summaryPanel.add(balanceLabel);
         mainPanel.add(summaryPanel);
 
-        // TABELA
+
         transactionTable = new JTable();
         JScrollPane scrollPane = new JScrollPane(transactionTable);
         mainPanel.add(scrollPane);
 
-        // =====================
-        // ACTION LISTENERI
-        // =====================
 
-        // DODAJ
         addButton.addActionListener(e -> {
             try {
                 String type = (String) typeCombo.getSelectedItem();
@@ -170,7 +166,7 @@ public class FinanceTrackerForm {
             }
         });
 
-        // AŽURIRAJ
+
         updateButton.addActionListener(e -> {
             int selectedRow = transactionTable.getSelectedRow();
             if (selectedRow == -1) {
@@ -200,7 +196,7 @@ public class FinanceTrackerForm {
             }
         });
 
-        // BRIŠI
+
         deleteButton.addActionListener(e -> {
             int selectedRow = transactionTable.getSelectedRow();
             if (selectedRow == -1) {
@@ -225,7 +221,7 @@ public class FinanceTrackerForm {
             }
         });
 
-        // KLIK NA RED U TABELI - ucitaj u polja
+
         transactionTable.getSelectionModel().addListSelectionListener(e -> {
             int selectedRow = transactionTable.getSelectedRow();
             if (selectedRow != -1 && currentList != null && selectedRow < currentList.size()) {
@@ -237,7 +233,7 @@ public class FinanceTrackerForm {
             }
         });
 
-        // EXPORT
+
         exportButton.addActionListener(e -> exportToFile());
     }
 
